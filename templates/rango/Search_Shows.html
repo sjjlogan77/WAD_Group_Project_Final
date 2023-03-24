@@ -1,0 +1,20 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+
+{% block body_block %}
+	<center>
+	{% if searched %}
+		<h1> Your search results for : {{ searched }} </h1>	
+		<br/>
+		<h3>Movies</h3>
+		{% for movie in movies %}
+			<a href='/rango/movie/{{ movie.slug }}/'>{{ movie }}</a><br/>
+		{% endfor %}
+		<h3>Shows</h3>
+		{% for show in shows %}
+			<a href='/rango/tv/{{ show.slug }}/'>{{ show }}</a><br/>
+		{% endfor %}
+	{% endif %}
+	</center>
+{% endblock %}

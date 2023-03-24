@@ -1,0 +1,152 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	HOMEPAGE
+{% endblock %}
+		
+
+
+{% block body_block %}
+
+
+
+
+		<h3>Quick Search Options</h3>
+    
+		<form id="quicksearch"> 
+			<button type="button" href="" class = "form">Movies/TV shows A-Z</button>
+			<button type="button" href="" class = "form">New Movies/TV shows</button>
+			<button type="button" href="" class = "form">Top movies of last year</button>
+			<button type="button" href="" class = "form">Top TV shows of last year</button>
+			<button type="button" href="" class = "form">Worst Movies/TV shows</button>
+		</form>
+      
+		<h3>Popular Movies</h3>
+
+<div class="row">
+
+       <div class="column">
+                <img src="{% static 'images/image1.jpeg' %}" alt="image1" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image2.jpeg' %}" alt="image2" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image3.jpeg' %}" alt="image3" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image4.jpeg' %}" alt="image4" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image5.jpeg' %}" alt="image5" style="width:100%">
+            </div>
+        </div>
+
+		<script>
+			let slideIndex = 1;
+			showSlides(slideIndex);
+
+			// Next/previous controls
+			function plusSlides(n) {
+				showSlides(slideIndex += n);
+			}
+
+			// Thumbnail image controls
+			function currentSlide(n) {
+				showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+				let i;
+				let slides = document.getElementsByClassName("mySlides");
+				let dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {slideIndex = 1}
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " active";
+			}
+
+		</script>
+    
+		<div>
+
+			{%if movies %}
+			<div class= "hscrollable">
+			<ul>
+				{%for movie in movies %}
+				{% if movie.avgRating >= 8 %}
+					<li>
+						<a href='/rango/movie/{{ movie.slug }}/'>{{ movie.title }}</a> 
+						<p> {{ movie.avgRating }}/10 </p>
+					</li>
+				{% endif %}
+				{%endfor%}
+			</ul>
+			</div>
+			{%else%}
+			<strong>There are no movies present.</strong>
+		{%endif%}
+
+		</div>
+
+		{% if user.is_authenticated %}
+		<a href="{% url 'rango:add_movie' %}">Add Movie</a>
+		{% endif %}
+
+		<h3>Popular TV Shows</h3>
+			
+<div class="row">
+
+        <div class="column">
+                <img src="{% static 'images/image6.jpeg' %}" alt="image6" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image7.jpeg' %}" alt="image7" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image8.jpeg' %}" alt="image8" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image9.jpeg' %}" alt="image9" style="width:100%">
+            </div>
+            <div class="column">
+                <img src="{% static 'images/image10.jpeg' %}" alt="image10" style="width:100%">
+            </div>
+        </div>
+			
+		<div>
+
+			{%if shows %}
+			<div class="hscrollable">
+			<ul>
+				{%for tv in shows %}
+				{% if tv.avgRating >= 8 %}
+					<li>
+						<a href='/rango/tv/{{ tv.slug }}/'>{{ tv.title }}</a> 
+						<p> {{ tv.avgRating }}/10 </p>
+					</li>
+				{% endif %}
+				{%endfor%}
+			</ul>
+			</div>
+			{%else%}
+			<strong>There are no tv shows present.</strong>
+			{%endif%}
+
+		</div>
+
+		{% if user.is_authenticated %}
+		<a href="{% url 'rango:add_tv' %}">Add TV show</a>
+		{% endif %}
+		
+
+{% endblock %}
+
+

@@ -1,0 +1,35 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {% if tv %}
+        {{ tv.title }}
+    {% else %}
+        Unknown TV Show
+    {% endif %}
+{% endblock %}
+
+{% block body_block %}
+    {% if tv %}
+    <h1>{{ tv.title }}</h1>
+    <p>This TV show was released in {{ tv.releaseDate }}</p>
+    {% if ratings %}
+    <h4>Current Ratings:</h4>
+			<div class = "scrollable">
+			<ul>
+			{% for rating in ratings %}
+				<li>{{ rating.rating }}/10 by {{ rating.user }}</li>
+			{% endfor %}
+			</ul>
+			</div>
+			<p> gives an average of: {{ tv.avgRating }} </p>
+    {% else %}
+    <strong>No ratings for current TV Show.</strong>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'rango:add_ratingtv' tv.slug %}">Add Rating</a> <br />
+    {% endif %}
+    {% else %}
+    The specified TV show does not exist.
+    {% endif %}
+{% endblock %}

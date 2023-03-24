@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title>
+			{% block title_block %}
+				TVRatingSystem
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/newest.css' %}">
+	</head>
+	<body>
+	
+		<div class="topnav">
+			<a>TV RATINGS</a>
+			{% if user.is_authenticated %}
+			Hi {{ user.username }}!
+			<a href="{% url 'rango:logout' %}">Logout</a>
+			{% else %}
+			<a href="{% url 'rango:login' %}">Login</a>
+			<a href="{% url 'rango:signup' %}">Sign Up</a>
+			{% endif %}
+			<a href="{% url 'rango:HOMEPAGE' %}">Home</a>
+			<form class="d-flex" method="POST" action ="{% url 'rango:Search_Shows' %}"> 
+		
+				{% csrf_token %}
+				<input class="form-control m-2" type="search" placeholder="Search Shows" aria-label="Search" name="searched">
+				<button class ="btn btn-outline-secondary" type ="submit">Search</button>
+			</form>
+		</div>
+	
+		<div>
+		{% block body_block %}
+		{% endblock %}
+		</div>
+
+	</body>
+</html>
