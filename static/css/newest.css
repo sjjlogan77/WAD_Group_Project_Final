@@ -1,0 +1,180 @@
+  /* Add box sizing */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Style the top navigation bar */
+  .topnav {
+    background-color: #7c1d1d;
+    overflow: hidden;
+  }
+
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: right;
+    color: #fffdd0;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #fffdd0;
+    color: #7c1d1d;
+  }
+
+  /* Style the body */
+  body {
+    background-color: #571515;
+  }
+
+  /* Style the slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+
+  /* Style the next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: #fffdd0;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  /* Style the caption text */
+  .text {
+    color: #fffdd0;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Style the number text */
+  .numbertext {
+    color: #fffdd0;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+
+  /* Style the dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #fffdd0;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  /* Make the active dot, add a background color */
+  .active, .dot:hover {
+    background-color: #7c1d1d;
+  }
+
+  /* Style the fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: .4;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Style the footer */
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #571515;
+    color: #fffdd0;
+    text-align: center;
+  }
+
+  h3 {
+    color: #fffdd0;
+    font-family: 'Open Sans';
+  }
+
+  .form {
+    color: black;
+    font-family: 'Open Sans';
+  }
+  
+  .scrollable {
+	  height:200px;
+	  width:auto;
+	  border:1px solid #ccc;
+	  border-color: black;
+	  font:16px/26px Georgia, Garamond, Serif;
+	  overflow:auto;
+  }
+  
+.hscrollable {
+	height:120px;
+	width:auto;
+	border:1px solid #ccc;
+	border-color: black;
+	overflow-x:auto;
+	overflow-y: hidden;
+  }
+.hscrollable li{
+	display: inline-block;
+}
+
+.hscrollable a{
+	padding-right: 20px;
+}
+.column {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
